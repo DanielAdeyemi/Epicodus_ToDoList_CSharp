@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using ToDoList.Models;
 
 namespace ToDoList
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Welcome to the To Do List");
         }
     }
 }
