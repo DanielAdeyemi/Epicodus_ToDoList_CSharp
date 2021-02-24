@@ -36,9 +36,9 @@ ___
 | 03 | Replace a description with new one  | updatedDescription = "Dishes"| Assert.AreEqual(updatedDescription)| ✅|
 | 04 | Get an empty list of tasks | Item.GetAll()|Assert.AreEqual(empty list) | ✅|
 | 05 | return a list with recently created items | new Item(description)| Item(description) | ✅ |
-| 06 | Add Items in a list | Add(A)| A| ❌ |
-| 07 | Display whole list | List| List| ❌ |
-| 08 |  | | | ❌ |
+| 06 | Add Items in a list | Add(A)| A| ✅  |
+| 07 | Display whole list | List| List| ✅  |
+| 08 | Display no if list is empty | List() | No | ✅  |
 | 09 |  | | | ❌ |
 
 </details>
