@@ -18,20 +18,24 @@ namespace ToDoList
             }
             else if(reply == "Add")
             {
-             Console.WriteLine("Please enter the description for the new item.");
-        reply = Console.ReadLine();
-        Item newItem = new Item(reply);
-        Main();
+                // Console.WriteLine("Please enter the description for the new item.");
+                // reply = Console.ReadLine();
+                // Item newItem = new Item(reply);
+                // Main();
+                Item.GetAll().ForEach(x => {
+                Console.WriteLine($"{x.counter}. {x.Description}");
+                });
+                Main();
 
             }
             else
             {
-                 List<Item> test = Item.GetAll();
-        foreach(Item todo in test)
-        {
-          Console.WriteLine(todo.Description);
-        }
-        Main();
+                List<Item> test = Item.GetAll();
+                foreach(Item todo in test)
+                {
+                    Console.WriteLine(todo.Description);
+                }
+            Main();
             }
 
         }
