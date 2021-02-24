@@ -30,13 +30,14 @@ ___
 <summary>🚥 Tests</summary>
 
 | # | Behavior | Input |  Output | Complete |
-| :------------- | :------------- | :------------- | :------------: | :------------- |
+| :------------- | :------------- | :------------- | :------------ | :-------------: |
 | 01 | Create a constractor | Item | typeof(Item) |✅|
-| 02 |  | | |✅ |
-| 03 |   | || ✅|
-| 04 |  | | | ✅|
-| 05 |  | | | ❌ |
+| 02 | Create an Item in a list | description = "Walking the dog" |Assert.AreEqual(description)|✅ |
+| 03 | Replace a description with new one  | updatedDescription = "Dishes"| Assert.AreEqual(updatedDescription)| ✅|
+| 04 | Get an empty list of tasks | Item.GetAll()|Assert.AreEqual(empty list) | ✅|
+| 05 | return a list with recently created items | new Item(description)| Item(description) | ❌ |
 | 06 |  | | | ❌ |
+| 07 |  | | | ❌ |
 
 </details>
 
