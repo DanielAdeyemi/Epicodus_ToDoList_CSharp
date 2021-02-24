@@ -29,9 +29,9 @@ ___
 <details>
 <summary>🚥 Tests</summary>
 
-| # | Function | Input |  Output | Complete |
-| :------------- | :------------- | :------------- | :------------- | :------------- |
-| 01 |  |  |  |✅|
+| # | Behavior | Input |  Output | Complete |
+| :------------- | :------------- | :------------- | :------------: | :------------- |
+| 01 | Create a constractor | Item | typeof(Item) |✅|
 | 02 |  | | |✅ |
 | 03 |   | || ✅|
 | 04 |  | | | ✅|
