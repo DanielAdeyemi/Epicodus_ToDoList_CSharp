@@ -43,32 +43,21 @@ namespace ToDoList.Tests
        [TestMethod]
         public void GetAll_ReturnsEmptyList_ItemList()
         {
-  // Arrange
-            
-            List<Item> newList = new List<Item> {};
-
-            // Act
-            List<Item> result = Item.GetAll();
-
-            // Assert
-            CollectionAssert.AreEqual(newList, result);
+            List<Item> newList = new List<Item> {}; // Arrange
+            List<Item> result = Item.GetAll(); // Act
+            CollectionAssert.AreEqual(newList, result); // Assert
         }
 
         [TestMethod]
     public void GetAll_ReturnsItems_ItemList()
     {
-      //Arrange
-      string description01 = "Walk the dog";
+  string description01 = "Walk the dog"; //Arrange
       string description02 = "Wash the dishes";
       Item newItem1 = new Item(description01);
       Item newItem2 = new Item(description02);
       List<Item> newList = new List<Item> { newItem1, newItem2 };
-
-      //Act
-      List<Item> result = Item.GetAll();
-
-      //Assert
-      CollectionAssert.AreEqual(newList, result);
+      List<Item> result = Item.GetAll(); //Act
+      CollectionAssert.AreEqual(newList, result); //Assert
     }
     }
 }
