@@ -1,52 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using ToDoList.Models;
-using System.Linq;
+﻿using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ToDoList
 {
-  class Program
+  public class Program
   {
-    public static void Main()
+    public static void Main(string[] args)
     {
-      Console.WriteLine("Welcome to the To Do List");
-      Console.WriteLine("Would you like to add an item to your list or view your list? (Add/View)");
-      string reply = Console.ReadLine();
-      if (reply != "Add" && reply != "View" && string.IsNullOrEmpty(reply))
-      {
-        Console.WriteLine("Error! Please respond to the previous question with \"Add\" or \"View\"");
-        Main();
-      }
-      else if (reply == "Add")
-      {
-        Console.WriteLine("Please enter the description for the new item.");
-        reply = Console.ReadLine();
-        Item newItem = new Item(reply);
-        Main();
-      }
-      else
-      {
-        if (Item.GetAll().Any())
-        {
-          Item.GetAll().ForEach(x =>
-          {
-            Console.WriteLine($"{x.counter}. {x.Description}");
-          });
-          Main();
-        }
-        else
-        {
-          Console.WriteLine("You don't have anything to do - enjoy your life!");
-        }
+      var host = new WebHostBuilder()
+        .UseKestrel()
+        .UseContentRoot(Directory.GetCurrentDirectory())
+        .UseIISIntegration()
+        .UseStartup<Startup>()
+        .Build();
 
-        //     List<Item> test = Item.GetAll();
-        //     foreach(Item todo in test)
-        //     {
-        //         Console.WriteLine(todo.Description);
-        //     }
-        // Main();
-      }
-
+      host.Run();
     }
   }
 }
