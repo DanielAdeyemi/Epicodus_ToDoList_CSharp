@@ -6,7 +6,7 @@ namespace ToDoList.Models
   public class Item
   {
     public string Description { get; set; }
-    public int Id { get; }
+    public int Id { get; set;}
 
     public Item(string description)
     {
@@ -27,8 +27,9 @@ namespace ToDoList.Models
       else
       {
         Item newItem = (Item)otherItem;
+        bool idEquality = (this.Id == newItem.Id);
         bool descriptionEquality = (this.Description == newItem.Description);
-        return descriptionEquality;
+        return (idEquality && descriptionEquality);
       }
     }
 
@@ -79,7 +80,7 @@ namespace ToDoList.Models
       description.Value = this.Description;
       cmd.Parameters.Add(description);
       cmd.ExecuteNonQuery();
-      // Id = cmd.LastInsertedId;
+      Id = (int)cmd.LastInsertedId; //assign Id from DB to our object
       conn.Close();
       if (conn != null)
       {
