@@ -9,5 +9,11 @@ namespace ToDoList.Controllers
     {
       return View();
     }
+
+    [HttpGet("/favorite_photos")]
+    public ActionResult FavoritePhotos()
+    {
+      return View();
+    }
   }
 }
