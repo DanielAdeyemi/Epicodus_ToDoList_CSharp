@@ -32,6 +32,12 @@ namespace ToDoList.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult Details(int id)
+    {
+      Item thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
+      return View(thisItem);
+    }
+
 
     // [HttpGet("/categories/{categoryId}/items/new")]
     // public ActionResult New(int categoryId)
