@@ -19,6 +19,19 @@ namespace ToDoList.Controllers
       return View(model);
     }
 
+    public ActionResult Create() 
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Item item)
+    {
+      _db.Items.Add(item);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
 
     // [HttpGet("/categories/{categoryId}/items/new")]
     // public ActionResult New(int categoryId)
