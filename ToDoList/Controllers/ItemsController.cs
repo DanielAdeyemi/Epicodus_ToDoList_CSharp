@@ -53,6 +53,20 @@ namespace ToDoList.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult Delete(int id)
+    {
+      var thisItem = _db.Items.FirstOrDefault(item=> item.ItemId == id);
+      return View(thisItem);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisItem = _db.Item.FirstOrDefault(item => item.ItemId == id);
+      _db.Items.Remove(thisItem);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
     // [HttpGet("/categories/{categoryId}/items/new")]
     // public ActionResult New(int categoryId)
