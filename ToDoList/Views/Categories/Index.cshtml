@@ -1,4 +1,9 @@
+@{
+  Layout = "_Layout";
+}
+
 @using ToDoList.Models;
+@model List<ToDoList.Models.Category>;
 
 <h1>Categories</h1>
 
@@ -9,7 +14,9 @@
 
 @foreach (Category category in Model)
 {
-  <h3><a href='/categories/@category.Id'>@category.Name</a></h3>
+  <li>@Html.ActionLink($"{category.Name}", "Details", new { id = category.CategoryId })</li>
 }
 
-<p><a href='/'>Back home</a></p>
+<p>@Html.ActionLink("Add new category", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
