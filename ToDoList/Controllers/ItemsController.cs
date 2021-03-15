@@ -16,11 +16,10 @@ namespace ToDoList.Controllers
       _db = db;
     }
 
-    // public ActionResult Index()
-    // {
-    //   List<Item> model = _db.Items.Include(item => item.Category).ToList();
-    //   return View(model);
-    // }
+    public ActionResult Index()
+    {
+      return View(_db.Items.ToList());
+    }
 
     // public ActionResult Create()
     // {
