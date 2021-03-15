@@ -14,6 +14,8 @@
   @Html.EditorFor(model=>model.Description)
   @Html.Label("Select category")
   @Html.DropDownList("CategoryId")
+  @Html.Label("Task Comleted?")
+  @Html.CheckBoxFor(model=>model.Completed)
 
   <input type="submit" value="Save" />
 }
