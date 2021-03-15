@@ -16,17 +16,17 @@ namespace ToDoList.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
-    {
-      List<Item> model = _db.Items.Include(item => item.Category).ToList();
-      return View(model);
-    }
+    // public ActionResult Index()
+    // {
+    //   List<Item> model = _db.Items.Include(item => item.Category).ToList();
+    //   return View(model);
+    // }
 
-    public ActionResult Create()
-    {
-      ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
-      return View();
-    }
+    // public ActionResult Create()
+    // {
+    //   ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
+    //   return View();
+    // }
 
     [HttpPost]
     public ActionResult Create(Item item)
