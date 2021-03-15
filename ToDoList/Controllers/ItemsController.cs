@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ToDoList.Controllers
@@ -33,17 +34,18 @@ namespace ToDoList.Controllers
       _db.SaveChanges();
       if (CategoryId != 0)
       {
-        _db.CategoryItem.Add(new CategoryItem() {CategoryId = CategoryId, ItemId = item.ItemId});
+        _db.CategoryItem.Add(new CategoryItem() { CategoryId = CategoryId, ItemId = item.ItemId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
     public ActionResult Details(int id)
     {
-      Item thisItem = _db.Items
-        .Include(item =>item.JoinEntities)
-        .ThenInclude(join => join.Category)
-        .FirstOrDefault(item => item.ItemId == id);
+      var thisItem = _db.Items
+          .Include(item => item.JoinEntities)
+          .ThenInclude(join => join.Category)
+          .FirstOrDefault(item => item.ItemId == id);
       return View(thisItem);
     }
 
@@ -58,8 +60,8 @@ namespace ToDoList.Controllers
     public ActionResult Edit(Item item, int CategoryId)
     {
       if (CategoryId != 0)
-      {   
-        _db.CategoryItem.Add(new CategoryItem() {CategoryId = CategoryId, ItemId = item.ItemId});
+      {
+        _db.CategoryItem.Add(new CategoryItem() { CategoryId = CategoryId, ItemId = item.ItemId });
       }
       _db.Entry(item).State = EntityState.Modified;
       _db.SaveChanges();
@@ -68,7 +70,7 @@ namespace ToDoList.Controllers
 
     public ActionResult AddCategory(int id)
     {
-      var thisItem = _db.Items.FirstOrDefault(item=>item.ItemId == id);
+      var thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
       ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
       return View(thisItem);
     }
@@ -78,7 +80,7 @@ namespace ToDoList.Controllers
     {
       if (CategoryId != 0)
       {
-        _db.CategoryItem.Add(new CategoryItem() {CategoryId = CategoryId, ItemId = item.ItemId});
+        _db.CategoryItem.Add(new CategoryItem() { CategoryId = CategoryId, ItemId = item.ItemId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -99,9 +101,10 @@ namespace ToDoList.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpPost]
     public ActionResult DeleteCategory(int joinId)
     {
-      var joinEntry = _db.CategoryItem.FirstOrDefault(entry =>entry.CategoryItemId == joinId);
+      var joinEntry = _db.CategoryItem.FirstOrDefault(entry => entry.CategoryItemId == joinId);
       _db.CategoryItem.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
