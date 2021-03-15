@@ -67,6 +67,13 @@ namespace ToDoList.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult AddCategory(int id)
+    {
+      var thisItem = _db.Items.FirstOrDefault(item=>item.ItemId == id);
+      ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
+      return View(thisItem);
+    }
+
     public ActionResult Delete(int id)
     {
       var thisItem = _db.Items.FirstOrDefault(item => item.ItemId == id);
