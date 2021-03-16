@@ -8,7 +8,8 @@
 <h1>@Html.DisplayFor(item=>item.Count) Items</h1>
 
 <button class="btn btn-dark">@Html.ActionLink("Display alphabetically", "Index", new {userInput = "alphabet"})</button>
-<button class="btn btn-dark">@Html.ActionLink("Sort by category", "Index", new {userInput = "category"})</button>
+<button class="btn btn-dark">@Html.ActionLink("Sort by task completion", "Index", new {userInput = "complete"})</button>
+<button class="btn btn-dark">@Html.ActionLink("Back to unsorted list", "Index", new {userInput = "category"})</button>
 
 @if (@Model.Count == 0)
 {

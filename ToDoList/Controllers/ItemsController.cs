@@ -23,6 +23,9 @@ namespace ToDoList.Controllers
         case "alphabet":
           List<Item> model = _db.Items.OrderBy(model=>model.Description).ToList();
           return View(model);
+        case "complete":
+          List<Item> model1 = _db.Items.OrderByDescending(model=>model.Completed).ThenBy(model=>model.Description).ToList();
+          return View(model1);
         default:
           return View(_db.Items.ToList());
      } 
