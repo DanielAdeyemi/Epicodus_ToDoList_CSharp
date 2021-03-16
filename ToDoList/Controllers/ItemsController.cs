@@ -16,9 +16,17 @@ namespace ToDoList.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
+    public ActionResult Index(string userInput)
     {
-      return View(_db.Items.ToList());
+     switch (userInput)
+     {
+        case "alphabet":
+          List<Item> model = _db.Items.OrderBy(model=>model.Description).ToList();
+          return View(model);
+        default:
+          return View(_db.Items.ToList());
+     } 
+      
     }
 
     public ActionResult Create()
@@ -59,12 +67,16 @@ namespace ToDoList.Controllers
     [HttpPost]
     public ActionResult Edit(Item item, int CategoryId)
     {
-      if (CategoryId != 0)
+      if (CategoryId != 0)  
       {
-        _db.CategoryItem.Add(new CategoryItem() { CategoryId = CategoryId, ItemId = item.ItemId });
-      }
+        // var thisCatId = _db.CategoryItem.FirstOrDefault(CategoryItem=>CategoryItem.Item == item).CategoryId;
+        // if (CategoryId != thisCatId)
+        // {
+        //   _db.CategoryItem.Add(new CategoryItem() { CategoryId = CategoryId, ItemId = item.ItemId });
+        // }
       _db.Entry(item).State = EntityState.Modified;
       _db.SaveChanges();
+      }
       return RedirectToAction("Index");
     }
 
