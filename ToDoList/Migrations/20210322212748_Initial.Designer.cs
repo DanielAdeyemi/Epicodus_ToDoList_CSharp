@@ -9,8 +9,8 @@ using ToDoList.Models;
 namespace ToDoList.Migrations
 {
     [DbContext(typeof(ToDoListContext))]
-    [Migration("20210322183159_Authoriztion")]
-    partial class Authoriztion
+    [Migration("20210322212748_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
